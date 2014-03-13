@@ -206,12 +206,12 @@ float predictModel(vector<float> sample,CvSVM &model)
 	float score=model.predict(sample_mat,true);
 	//if (score!=-1)
 	//	cout<<score<<endl;
-	return score;
+	return -score;
 }
 
 bool slideWindowDet(Mat img,bool pca,Mat mean, Mat eigenVec,CvSVM &model,int step,int w,int h,Mat& output)
 {
-	output=-200*Mat::ones(img.size(),CV_32FC1);
+	output=Mat::zeros(img.size(),CV_32FC1);
 	for (int i=0;i<img.cols-w+1;i+=step)
 		for (int j=0;j<img.rows-h+1;j+=step)
 		{
@@ -232,7 +232,7 @@ bool slideWindowDet(Mat img,bool pca,Mat mean, Mat eigenVec,CvSVM &model,int ste
 
 bool slideWindowDet(Mat img,CvSVM &model,int step,int w,int h,Mat& output)
 {
-	output=-200*Mat::ones(img.size(),CV_32FC1);
+	output=Mat::zeros(img.size(),CV_32FC1);
 	for (int i=0;i<img.cols-w+1;i+=step)
 		for (int j=0;j<img.rows-h+1;j+=step)
 		{
@@ -250,15 +250,37 @@ bool slideWindowDet(Mat img,CvSVM &model,int step,int w,int h,Mat& output)
 
 
 
-bool drawWindow(Mat img,Mat score,int w,int h,int step)
+bool drawWindow(Mat img,Mat score,int w,int h,int step,Mat &crop_window)
 {
+	crop_window=img.clone();
+	Mat tmpsc=score(Rect(0,0,img.cols-w+1,img.rows-h+1));
 	double minVal,maxVal;
 	Point minLoc,maxLoc;
-	minMaxLoc(score,&minVal,&maxVal,&minLoc,&maxLoc);
+	minMaxLoc(tmpsc,&minVal,&maxVal,&minLoc,&maxLoc);
 	for (int i=0;i<img.cols-w+1;i+=step)
 		for (int j=0;j<img.rows-h+1;j+=step)
-			if (abs(score.at<float>(j,i)-minVal)<0.5*abs(minVal))
-				rectangle(img,Rect(i,j,w,h),Scalar(0,0,255));
+			if (abs(tmpsc.at<float>(j,i)-maxVal)<0.5*abs(maxVal))
+				rectangle(crop_window,Rect(i,j,w,h),Scalar(0,0,255));
+	return true;
+
+}
+bool drawPotential(Mat img,Mat score,int w,int h,Mat &pot)
+{
+	Mat tmpimg;
+	cvtColor(img(Rect(0,0,img.cols-w+1,img.rows-h+1)),tmpimg,CV_BGR2GRAY);
+	
+	Mat tmpsc=score(Rect(0,0,img.cols-w+1,img.rows-h+1));
+	Mat scaled_sc;
+
+	pot=Mat::zeros(tmpimg.size(),CV_8UC3);
+	double min,max;
+	minMaxIdx(tmpsc,&min,&max);
+	tmpsc.convertTo(scaled_sc,CV_8UC1,255/(max-min),-min);
+	equalizeHist(scaled_sc,scaled_sc);
+
+	Mat src[]={/*Mat::zeros(tmpimg.size(),CV_8UC1)*/tmpimg,tmpimg,scaled_sc};
+	int from_to[]={0,0,1,1,2,2};
+	mixChannels(src,3,&pot,1,from_to,3);
 	return true;
 
 }
@@ -266,7 +288,7 @@ int main(int argc,char * argv[])
 {
 	Mat all_features,all_features_pca,mean,eigenVecs;
 	int posN,negN;
-	bool pca=true;
+	bool pca=false;
 	if (boost::filesystem::exists("data/all_features.dat"))
 	{
 		cout<<"use pre_computed features!"<<endl;
@@ -342,22 +364,27 @@ int main(int argc,char * argv[])
 		cout<<"-------pca features: "<<all_features_pca.rows<<","<<all_features_pca.cols<<endl;
 
 	Mat input,output;
-	input=imread("man2.jpg");
-	Mat input_gray;
-	cvtColor(input,input_gray,CV_RGB2GRAY);
-	//resize(input,input,Size(),128/100.0,128/100.0);
+	input=imread("car10.jpg");
+	
 	if (!pca)
-		slideWindowDet(input_gray,model,1,64,64,output);
+		slideWindowDet(input,model,1,64,64,output);
 	else
 		slideWindowDet(input,pca,mean,eigenVecs,model,1,64,64,output);
-	output=output(Rect(0,0,output.cols-64+1,output.rows-64+1));
-	drawWindow(input,output,64,64,1);
-	imshow("crop_window",input);
+	Mat potential;
+	drawPotential(input,output,64,64,potential);
+	imshow("potential",potential);
+	
+	Mat crop_window;
+	drawWindow(input,output,64,64,1,crop_window);
+
+	
+	imshow("crop_window",crop_window);
+	
 	double min,max;
-	minMaxIdx(output,&min,&max);
+	minMaxIdx(output(Rect(0,0,output.cols-64+1,output.rows-64+1)),&min,&max);
 	cout<<min<<" "<<max<<endl;
 	output.convertTo(output,CV_8UC1,255/(max-min),-min);
-	imshow("window",output);
+	imshow("score",output(Rect(0,0,output.cols-64+1,output.rows-64+1)));
 	cvWaitKey();
 
 }
