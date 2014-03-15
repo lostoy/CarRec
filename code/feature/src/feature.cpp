@@ -208,77 +208,98 @@ float predictModel(vector<float> sample,CvSVM &model)
 	//	cout<<score<<endl;
 	return -score;
 }
-
-bool slideWindowDet(Mat img,bool pca,Mat mean, Mat eigenVec,CvSVM &model,int step,int w,int h,Mat& output)
+bool genLoc(int w, int h, int sw,int sh,int step, vector<Rect> &Locs)
 {
-	output=Mat::zeros(img.size(),CV_32FC1);
-	for (int i=0;i<img.cols-w+1;i+=step)
-		for (int j=0;j<img.rows-h+1;j+=step)
+	Locs.clear();
+	for (int i=0;i<w-sw+1;i+=step)
+		for (int j=0;j<h-sh+1;j+=step)
 		{
-			vector<float> feature;
-			Mat roi=img(Rect(i,j,w,h));
-			if (pca)
-				getImgProj(roi,mean,eigenVec,feature);
-			else
-				getFeatureFromImg(roi,feature);
-			output.at<float>(j,i)=predictModel(feature,model);
-			//cout<<output.at<float>(j,i)<<endl;
-			//imshow("detect",roi);
-			//cvWaitKey(4);	
+			Rect t(i,j,sw,sh);
+			Locs.push_back(t);
 		}
+	return true;
+}
+
+bool slideWindowDet(Mat img,vector<Rect> locs, Mat mean, Mat eigenVec,CvSVM &model,vector<float> &score)
+{
+	int64 t;
+	score.clear();
+	for (int i=0;i<locs.size();i++)
+	{
+		vector<float> feature;
+		Mat roi=img(locs[i]);
+		t=getTickCount();
+		getImgProj(roi,mean,eigenVec,feature);
+		//cout<<"feature time: "<<(getTickCount()-t)*1.0/getTickFrequency()<<endl;
+		t=getTickCount();
+		score.push_back(predictModel(feature,model));
+		//cout<<"predict time: "<<(getTickCount()-t)*1.0/getTickFrequency()<<endl;
+	}
 	
 	return true;
 }
 
-bool slideWindowDet(Mat img,CvSVM &model,int step,int w,int h,Mat& output)
+bool slideWindowDet(Mat img,vector<Rect> locs,CvSVM &model,vector<float> &score)
 {
-	output=Mat::zeros(img.size(),CV_32FC1);
-	for (int i=0;i<img.cols-w+1;i+=step)
-		for (int j=0;j<img.rows-h+1;j+=step)
-		{
-			vector<float> feature;
-			Mat roi=img(Rect(i,j,w,h));
-			getFeatureFromImg(roi,feature);
-			output.at<float>(j,i)=predictModel(feature,model);
-			//cout<<output.at<float>(j,i)<<endl;
-			//imshow("detect",roi);
-			//cvWaitKey(4);	
-		}
+	int64 t;
+	score.clear();
+	for (int i=0;i<locs.size();i++)
+	{
+		vector<float> feature;
+		Mat roi=img(locs[i]);
+		t=getTickCount();
+		getFeatureFromImg(roi,feature);
+		//cout<<"feature time: "<<(getTickCount()-t)*1.0/getTickFrequency()<<endl;
+		t=getTickCount();
+		score.push_back(predictModel(feature,model));
+		//cout<<"predict time: "<<(getTickCount()-t)*1.0/getTickFrequency()<<endl;
+	}
 	
 	return true;
 }
 
 
 
-bool drawWindow(Mat img,Mat score,int w,int h,int step,Mat &crop_window)
+bool drawWindow(Mat img,vector<Rect> locs,vector<float> score,Mat &crop_window)
 {
 	crop_window=img.clone();
-	Mat tmpsc=score(Rect(0,0,img.cols-w+1,img.rows-h+1));
 	double minVal,maxVal;
 	Point minLoc,maxLoc;
-	minMaxLoc(tmpsc,&minVal,&maxVal,&minLoc,&maxLoc);
-	for (int i=0;i<img.cols-w+1;i+=step)
-		for (int j=0;j<img.rows-h+1;j+=step)
-			if (abs(tmpsc.at<float>(j,i)-maxVal)<0.5*abs(maxVal))
-				rectangle(crop_window,Rect(i,j,w,h),Scalar(0,0,255));
+	minMaxLoc(score,&minVal,&maxVal,&minLoc,&maxLoc);
+	for(int i=0;i<locs.size();i++)
+		if (abs(score[i]-maxVal)<0.1*abs(maxVal))
+			rectangle(crop_window,locs[i],Scalar(0,0,255));
 	return true;
 
 }
-bool drawPotential(Mat img,Mat score,int w,int h,Mat &pot)
+bool drawPotential(Mat img,vector<Rect> locs,vector<float> score,Mat &pot)
 {
 	Mat tmpimg;
-	cvtColor(img(Rect(0,0,img.cols-w+1,img.rows-h+1)),tmpimg,CV_BGR2GRAY);
+	Mat scaled_sc=Mat::zeros(img.size(),CV_8UC1);
+	cvtColor(img,tmpimg,CV_BGR2GRAY);
 	
-	Mat tmpsc=score(Rect(0,0,img.cols-w+1,img.rows-h+1));
-	Mat scaled_sc;
-
 	pot=Mat::zeros(tmpimg.size(),CV_8UC3);
-	double min,max;
-	minMaxIdx(tmpsc,&min,&max);
-	tmpsc.convertTo(scaled_sc,CV_8UC1,255/(max-min),-min);
-	equalizeHist(scaled_sc,scaled_sc);
 
-	Mat src[]={/*Mat::zeros(tmpimg.size(),CV_8UC1)*/tmpimg,tmpimg,scaled_sc};
+	//min-max normalization
+	double min,max;
+	cv::minMaxIdx(score,&min,&max);
+
+	vector<uchar> tmp_sc;
+	for (int i=0;i<locs.size();i++)
+	{
+		tmp_sc.push_back(uchar((score[i]-min)/(max-min)*255));
+	}
+
+	//equalization
+	equalizeHist(tmp_sc,tmp_sc);
+	
+	for (int i=0;i<locs.size();i++)
+	{
+		scaled_sc.at<uchar>(locs[i].y+locs[i].height/2-1,locs[i].x+locs[i].width/2-1)=tmp_sc[i];
+	}
+	
+
+	Mat src[]={tmpimg,tmpimg,scaled_sc};
 	int from_to[]={0,0,1,1,2,2};
 	mixChannels(src,3,&pot,1,from_to,3);
 	return true;
@@ -288,7 +309,7 @@ int main(int argc,char * argv[])
 {
 	Mat all_features,all_features_pca,mean,eigenVecs;
 	int posN,negN;
-	bool pca=false;
+	bool pca=true;
 	if (boost::filesystem::exists("data/all_features.dat"))
 	{
 		cout<<"use pre_computed features!"<<endl;
@@ -304,7 +325,7 @@ int main(int argc,char * argv[])
 	{
 		Mat pos_features,neg_features;
 		cout<<"-------feature for pos images-------"<<endl;
-		getFeaturesFromTrainPath(argv[1],false,pos_features);
+		getFeaturesFromTrainPath(argv[1],true,pos_features);
 		cout<<"-------feature for neg images-------"<<endl;
 		getFeaturesFromTrainPath(argv[2],false,neg_features);
 
@@ -353,8 +374,6 @@ int main(int argc,char * argv[])
 
 		}
 	}
-	//outputFeaturesPCA(all_features,posN,negN,"all_features.txt");
-	//outputFeaturesPCA(all_features_pca,posN,negN,"all_features_pca.txt");
 	CvSVM model;
 	if (pca)
 		trainModel(all_features_pca,pca,posN,negN,model);
@@ -363,28 +382,35 @@ int main(int argc,char * argv[])
 	if (pca)
 		cout<<"-------pca features: "<<all_features_pca.rows<<","<<all_features_pca.cols<<endl;
 
-	Mat input,output;
-	input=imread("car10.jpg");
-	
+
+	//input a test image
+	Mat input;
+	input=imread("car15.jpg");
+	cout<<"image size : "<<input.cols<<","<<input.rows<<endl;
+
+	//generate detection locations
+	vector<Rect> locs;
+	genLoc(input.cols,input.rows,64,64,4,locs);
+	cout<<"possible locations: "<<locs.size()<<endl;
+	//slide window detection
+	vector<float> score;
 	if (!pca)
-		slideWindowDet(input,model,1,64,64,output);
+		slideWindowDet(input,locs,model,score);
 	else
-		slideWindowDet(input,pca,mean,eigenVecs,model,1,64,64,output);
+		slideWindowDet(input,locs,mean,eigenVecs,model,score);
+
+	//draw potential visualization
 	Mat potential;
-	drawPotential(input,output,64,64,potential);
+	drawPotential(input,locs,score,potential);
 	imshow("potential",potential);
 	
+	//draw detection rects
 	Mat crop_window;
-	drawWindow(input,output,64,64,1,crop_window);
+	drawWindow(input,locs,score,crop_window);
 
 	
 	imshow("crop_window",crop_window);
 	
-	double min,max;
-	minMaxIdx(output(Rect(0,0,output.cols-64+1,output.rows-64+1)),&min,&max);
-	cout<<min<<" "<<max<<endl;
-	output.convertTo(output,CV_8UC1,255/(max-min),-min);
-	imshow("score",output(Rect(0,0,output.cols-64+1,output.rows-64+1)));
 	cvWaitKey();
 
 }
