@@ -1,0 +1,13 @@
+# CMake generation dependency list for this directory.
+C:/D/workspace/CarRec/code/detect/CMakeLists.txt
+C:/D/lib/opencv/build2/install/OpenCVConfig-version.cmake
+C:/D/lib/opencv/build2/install/OpenCVConfig.cmake
+C:/D/lib/opencv/build2/install/x64/vc11/staticlib/OpenCVConfig.cmake
+C:/D/lib/opencv/build2/install/x64/vc11/staticlib/OpenCVModules.cmake
+C:/D/lib/opencv/build2/install/x64/vc11/staticlib/OpenCVModules-debug.cmake
+C:/D/lib/opencv/build2/install/x64/vc11/staticlib/OpenCVModules-release.cmake
+C:/Users/v-lyingw/Downloads/cmake-2.8.12.2-win32-x86/cmake-2.8.12.2-win32-x86/share/cmake-2.8/Modules/FindCUDA.cmake
+C:/Users/v-lyingw/Downloads/cmake-2.8.12.2-win32-x86/cmake-2.8.12.2-win32-x86/share/cmake-2.8/Modules/FindPackageHandleStandardArgs.cmake
+C:/Users/v-lyingw/Downloads/cmake-2.8.12.2-win32-x86/cmake-2.8.12.2-win32-x86/share/cmake-2.8/Modules/FindPackageMessage.cmake
+C:/Users/v-lyingw/Downloads/cmake-2.8.12.2-win32-x86/cmake-2.8.12.2-win32-x86/share/cmake-2.8/Modules/CMakeParseArguments.cmake
+C:/Users/v-lyingw/Downloads/cmake-2.8.12.2-win32-x86/cmake-2.8.12.2-win32-x86/share/cmake-2.8/Modules/FindBoost.cmake

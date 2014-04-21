@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGUID>{9FDF1593-0D69-4B36-B13D-794678A0E8E9}</ProjectGUID>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>feature</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseOfMfc>false</UseOfMfc>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+    <PropertyGroup>
+      <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\D\workspace\CarRec\build2\feature\Debug\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">feature.dir\Debug\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">feature</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\D\workspace\CarRec\build2\feature\Release\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">feature.dir\Release\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">feature</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\D\workspace\CarRec\build2\feature\MinSizeRel\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">feature.dir\MinSizeRel\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">feature</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
+      <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\D\workspace\CarRec\build2\feature\RelWithDebInfo\</OutDir>
+      <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">feature.dir\RelWithDebInfo\</IntDir>
+      <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">feature</TargetName>
+      <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+      <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+      <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
+    </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:x64 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;C:\local\boost_1_55_0\lib64-msvc-11.0\libboost_filesystem-vc110-mt-gd-1_55.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_core248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_flann248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_imgproc248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_highgui248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_features2d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_calib3d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ml248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_video248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_legacy248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_objdetect248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_photo248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_gpu248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_videostab248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ts248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ocl248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_superres248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_nonfree248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_stitching248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_contrib248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_nonfree248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_gpu248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_legacy248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_photo248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ocl248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_calib3d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_features2d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_flann248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ml248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_video248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_objdetect248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_highgui248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_imgproc248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_core248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libjpegd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libpngd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libtiffd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libjasperd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\IlmImfd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\zlibd.lib;comctl32.lib;gdi32.lib;ole32.lib;setupapi.lib;ws2_32.lib;vfw32.lib;C:\Qt\4.8.0\lib\QtGuid4.lib;C:\Qt\4.8.0\lib\QtTestd4.lib;C:\Qt\4.8.0\lib\QtCored4.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\cudart.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\nppc.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\nppi.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\npps.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\cufft.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/local/boost_1_55_0/lib64-msvc-11.0;C:/local/boost_1_55_0/lib64-msvc-11.0/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>C:/D/workspace/CarRec/build2/feature/Debug/feature.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/D/workspace/CarRec/build2/feature/Debug/feature.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat></DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;C:\local\boost_1_55_0\lib64-msvc-11.0\libboost_filesystem-vc110-mt-1_55.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_core248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_flann248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_imgproc248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_highgui248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_features2d248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_calib3d248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ml248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_video248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_legacy248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_objdetect248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_photo248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_gpu248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_videostab248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ts248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ocl248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_superres248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_nonfree248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_stitching248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_contrib248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_nonfree248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_gpu248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_legacy248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_photo248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ocl248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_calib3d248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_features2d248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_flann248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ml248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_video248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_objdetect248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_highgui248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_imgproc248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_core248.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libjpeg.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libpng.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libtiff.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libjasper.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\IlmImf.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\zlib.lib;comctl32.lib;gdi32.lib;ole32.lib;setupapi.lib;ws2_32.lib;vfw32.lib;C:\Qt\4.8.0\lib\QtGui4.lib;C:\Qt\4.8.0\lib\QtTest4.lib;C:\Qt\4.8.0\lib\QtCore4.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\cudart.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\nppc.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\nppi.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\npps.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\cufft.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/local/boost_1_55_0/lib64-msvc-11.0;C:/local/boost_1_55_0/lib64-msvc-11.0/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ImportLibrary>C:/D/workspace/CarRec/build2/feature/Release/feature.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/D/workspace/CarRec/build2/feature/Release/feature.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>MinSizeRel/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat></DebugInformationFormat>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:x64 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;C:\local\boost_1_55_0\lib64-msvc-11.0\libboost_filesystem-vc110-mt-1_55.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_core248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_flann248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_imgproc248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_highgui248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_features2d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_calib3d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ml248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_video248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_legacy248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_objdetect248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_photo248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_gpu248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_videostab248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ts248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ocl248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_superres248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_nonfree248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_stitching248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_contrib248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_nonfree248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_gpu248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_legacy248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_photo248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ocl248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_calib3d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_features2d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_flann248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ml248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_video248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_objdetect248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_highgui248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_imgproc248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_core248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libjpegd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libpngd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libtiffd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libjasperd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\IlmImfd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\zlibd.lib;comctl32.lib;gdi32.lib;ole32.lib;setupapi.lib;ws2_32.lib;vfw32.lib;C:\Qt\4.8.0\lib\QtGuid4.lib;C:\Qt\4.8.0\lib\QtTestd4.lib;C:\Qt\4.8.0\lib\QtCored4.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\cudart.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\nppc.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\nppi.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\npps.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\cufft.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/local/boost_1_55_0/lib64-msvc-11.0;C:/local/boost_1_55_0/lib64-msvc-11.0/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <ImportLibrary>C:/D/workspace/CarRec/build2/feature/MinSizeRel/feature.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/D/workspace/CarRec/build2/feature/MinSizeRel/feature.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>RelWithDebInfo/</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>C:\D\lib\opencv\build2\install\include;C:\D\lib\opencv\build2\install\include\opencv;C:\local\boost_1_55_0;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalOptions> /machine:x64 /debug %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;C:\local\boost_1_55_0\lib64-msvc-11.0\libboost_filesystem-vc110-mt-1_55.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_core248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_flann248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_imgproc248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_highgui248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_features2d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_calib3d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ml248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_video248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_legacy248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_objdetect248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_photo248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_gpu248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_videostab248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ts248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ocl248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_superres248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_nonfree248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_stitching248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_contrib248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_nonfree248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_gpu248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_legacy248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_photo248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ocl248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_calib3d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_features2d248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_flann248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_ml248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_video248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_objdetect248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_highgui248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_imgproc248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\opencv_core248d.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libjpegd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libpngd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libtiffd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\libjasperd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\IlmImfd.lib;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\zlibd.lib;comctl32.lib;gdi32.lib;ole32.lib;setupapi.lib;ws2_32.lib;vfw32.lib;C:\Qt\4.8.0\lib\QtGuid4.lib;C:\Qt\4.8.0\lib\QtTestd4.lib;C:\Qt\4.8.0\lib\QtCored4.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\cudart.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\nppc.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\nppi.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\npps.lib;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64\cufft.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:/local/boost_1_55_0/lib64-msvc-11.0;C:/local/boost_1_55_0/lib64-msvc-11.0/$(Configuration);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ImportLibrary>C:/D/workspace/CarRec/build2/feature/RelWithDebInfo/feature.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/D/workspace/CarRec/build2/feature/RelWithDebInfo/feature.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+      <Version></Version>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\D\workspace\CarRec\code\feature\CMakeLists.txt">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule C:/D/workspace/CarRec/code/feature/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\bin\cmake.exe -HC:/D/workspace/CarRec/code -BC:/D/workspace/CarRec/build2 --check-stamp-file C:\D\workspace\CarRec\build2\feature\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:/D/workspace/CarRec/code/feature/CMakeLists.txt;C:\D\workspace\CarRec\code\feature\CMakeLists.txt;C:\D\lib\opencv\build2\install\OpenCVConfig-version.cmake;C:\D\lib\opencv\build2\install\OpenCVConfig.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVConfig.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules-debug.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules-release.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindCUDA.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindPackageMessage.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\CMakeParseArguments.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindBoost.cmake;C:\D\workspace\CarRec\code\feature\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\D\workspace\CarRec\build2\feature\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule C:/D/workspace/CarRec/code/feature/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\bin\cmake.exe -HC:/D/workspace/CarRec/code -BC:/D/workspace/CarRec/build2 --check-stamp-file C:\D\workspace\CarRec\build2\feature\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:/D/workspace/CarRec/code/feature/CMakeLists.txt;C:\D\workspace\CarRec\code\feature\CMakeLists.txt;C:\D\lib\opencv\build2\install\OpenCVConfig-version.cmake;C:\D\lib\opencv\build2\install\OpenCVConfig.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVConfig.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules-debug.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules-release.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindCUDA.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindPackageMessage.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\CMakeParseArguments.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindBoost.cmake;C:\D\workspace\CarRec\code\feature\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\D\workspace\CarRec\build2\feature\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule C:/D/workspace/CarRec/code/feature/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\bin\cmake.exe -HC:/D/workspace/CarRec/code -BC:/D/workspace/CarRec/build2 --check-stamp-file C:\D\workspace\CarRec\build2\feature\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:/D/workspace/CarRec/code/feature/CMakeLists.txt;C:\D\workspace\CarRec\code\feature\CMakeLists.txt;C:\D\lib\opencv\build2\install\OpenCVConfig-version.cmake;C:\D\lib\opencv\build2\install\OpenCVConfig.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVConfig.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules-debug.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules-release.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindCUDA.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindPackageMessage.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\CMakeParseArguments.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindBoost.cmake;C:\D\workspace\CarRec\code\feature\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\D\workspace\CarRec\build2\feature\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule C:/D/workspace/CarRec/code/feature/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\bin\cmake.exe -HC:/D/workspace/CarRec/code -BC:/D/workspace/CarRec/build2 --check-stamp-file C:\D\workspace\CarRec\build2\feature\CMakeFiles\generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:/D/workspace/CarRec/code/feature/CMakeLists.txt;C:\D\workspace\CarRec\code\feature\CMakeLists.txt;C:\D\lib\opencv\build2\install\OpenCVConfig-version.cmake;C:\D\lib\opencv\build2\install\OpenCVConfig.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVConfig.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules-debug.cmake;C:\D\lib\opencv\build2\install\x64\vc11\staticlib\OpenCVModules-release.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindCUDA.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindPackageHandleStandardArgs.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindPackageMessage.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\CMakeParseArguments.cmake;C:\Users\v-lyingw\Downloads\cmake-2.8.12.2-win32-x86\cmake-2.8.12.2-win32-x86\share\cmake-2.8\Modules\FindBoost.cmake;C:\D\workspace\CarRec\code\feature\CMakeLists.txt;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\D\workspace\CarRec\build2\feature\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="C:\D\workspace\CarRec\code\feature\src\feature.cpp"  />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="C:/D/workspace/CarRec/build2/ZERO_CHECK.vcxproj">
+      <Project>0347FE9E-EB02-43E5-86E3-E875B6B8B311</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,4 @@
+C:/D/workspace/CarRec/build2/feature/CMakeFiles/ALL_BUILD.dir
+C:/D/workspace/CarRec/build2/CMakeFiles/ZERO_CHECK.dir
+C:/D/workspace/CarRec/build2/detect/CMakeFiles/detect.dir
+C:/D/workspace/CarRec/build2/feature/CMakeFiles/feature.dir

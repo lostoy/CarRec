@@ -1,4 +1,4 @@
-#include <opencv2/opencv.hpp>
+﻿#include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/ml/ml.hpp>
@@ -102,7 +102,7 @@ bool getFeaturesFromTrainImages(vector<string> imgPaths,bool crop,Mat &features)
 		inputImg(imgPaths[i],crop,64,64,img);
 		getFeatureFromImg(img,feature);
 		features_vec.push_back(feature);
-		cout<<"compute features "<<i<<"/"<<imgPaths.size()<<endl;
+		std::cout<<"compute features "<<i<<"/"<<imgPaths.size()<<endl;
 	}
 	
 	features=Mat(features_vec.size(),features_vec[0].size(),CV_32FC1);
@@ -113,7 +113,7 @@ bool getFeaturesFromTrainImages(vector<string> imgPaths,bool crop,Mat &features)
 			
 			features.at<float>(i,j)=features_vec[i][j];
 		}
-		cout<<"transform to CV::MAT "<<i<<"/"<<features_vec.size()<<endl;
+		std::cout<<"transform to CV::MAT "<<i<<"/"<<features_vec.size()<<endl;
 	}
 	return true;
 }
@@ -163,25 +163,32 @@ bool outputFeaturesPCA(Mat features_pca,int posN,int negN,string path)
 	return true;
 }
 
-bool trainModel(Mat Data,bool pca,int posN,int negN,CvSVM &model)
+std::string int2string(int num)
+{
+	std::stringstream ss;
+	ss << num;
+	return ss.str();
+}
+bool trainModel(Mat Data,bool pca,Mat response,CvSVM &model,int iter)
 {
 	string path;
 	if (pca)
-		path="data/svm_pca.dat";
+		path="data/svm_pca";
 	else
-		path="data/svm.dat";
+		path="data/svm";
+	path = path + int2string(iter) + ".dat";
+
 	if (boost::filesystem::exists(path))
 	{
-		cout<<"use pre_computed svm"<<endl;
+		std::cout<<"use pre_computed svm"<<path<<endl;
 		model.load(path.c_str());
 		return true;
 	}
-	cout<<"training svm"<<endl;
-	Mat response(posN+negN,1,CV_32FC1);
-	for (int i=0;i<posN+negN;i++)
-		response.at<float>(i)=i<posN?+1:-1;
+	std::cout<<"training svm"<<endl;
+
+
 	CvSVMParams params;
-	params.kernel_type=CvSVM::RBF;
+	params.kernel_type=CvSVM::LINEAR;
 	model.train_auto(Data,response,Mat(),Mat(),params,10);
 	model.save(path.c_str());
 	return true;
@@ -305,28 +312,82 @@ bool drawPotential(Mat img,vector<Rect> locs,vector<float> score,Mat &pot)
 	return true;
 
 }
+
+bool boostByimg(CvSVM &model, Mat img,int step, int w, int h, Mat & Data,Mat &response)
+{
+	vector<Rect> locs;
+	vector<float>sc;
+	genLoc(img.cols, img.rows, w, h, step, locs);
+	slideWindowDet(img, locs, model, sc);
+
+	for (int i = 0; i < sc.size(); i++)
+	{
+		if (sc[i] > 0)
+		{
+			vector<float>feature;
+			Mat roi = img(locs[i]);
+			getFeatureFromImg(roi, feature);
+			Mat new_f(1,feature.size(),CV_32FC1);
+			for (int j = 0; j < feature.size(); j++)
+				new_f.at<float>(j) = feature[j];
+			vconcat(Data, new_f, Data);
+			Mat new_r(1, 1, CV_32FC1);
+			new_r.at<float>(0) = -1;
+			vconcat(response, new_r, response);
+		}
+			
+	}
+	return true;
+}
+bool miningHN(CvSVM &model, bool pca,std::string path, int step, int w, int h, Mat &Data,Mat &response)
+{
+	vector<string> img_dirs, img_paths;
+
+	getImgDirs(path, img_dirs);
+	getImgPathFromImgDirs(img_dirs, img_paths); 
+	int iter = 1;
+	int last_f = Data.rows;
+	for (int i = 0; i < img_paths.size(); i++)
+	{
+		Mat img = imread(img_paths[i]);
+		boostByimg(model, img, step, w, h, Data, response);
+		std::cout << "image " << i << "/" << img_paths.size() << "added! training length: " << Data.rows << std::endl;
+		if (i % 10 == 0 && i != 0 && Data.rows - last_f>100)
+		{
+			trainModel(Data, pca, response, model, iter++);
+			last_f = Data.rows;
+		}
+	}
+	std::cout << "start second iter training:\n";
+	trainModel(Data, pca, response, model,iter++);
+	return true;
+}
 int main(int argc,char * argv[])
 {
 	Mat all_features,all_features_pca,mean,eigenVecs;
+	Mat response;
+
 	int posN,negN;
-	bool pca=true;
+	bool pca=false;
+
+
 	if (boost::filesystem::exists("data/all_features.dat"))
 	{
-		cout<<"use pre_computed features!"<<endl;
+		std::cout<<"use pre_computed features!"<<endl;
 		ifstream ifs("data/all_features.dat",std::ios::in|std::ios::binary);
 		{
 			boost::archive::binary_iarchive ia(ifs);
-			ia>>all_features>>posN>>negN;
+			ia >> all_features >> response;
 		}
 		ifs.close();
-		cout<<"pos# "<<posN<<" neg# "<<negN<<endl;
+		
 	}
 	else
 	{
 		Mat pos_features,neg_features;
-		cout<<"-------feature for pos images-------"<<endl;
+		std::cout<<"-------feature for pos images-------"<<endl;
 		getFeaturesFromTrainPath(argv[1],true,pos_features);
-		cout<<"-------feature for neg images-------"<<endl;
+		std::cout<<"-------feature for neg images-------"<<endl;
 		getFeaturesFromTrainPath(argv[2],false,neg_features);
 
 	
@@ -335,24 +396,30 @@ int main(int argc,char * argv[])
 		posN=pos_features.rows;
 		negN=neg_features.rows;
 	
+		response=Mat(posN + negN, 1, CV_32FC1);
+		for (int i=0;i<posN+negN;i++)
+			response.at<float>(i)=i<posN?+1:-1;
+		
 
 		vconcat(pos_features,neg_features,all_features);
 		
 		ofstream ofs("data/all_features.dat",std::ios::out|std::ios::binary);
 		{
 			boost::archive::binary_oarchive oa(ofs);
-			oa<<all_features<<posN<<negN;
+			oa<<all_features<<response;
 		}
 		ofs.close();
 
+		
+
 	}
-	cout<<"-------concatenate features: "<<all_features.rows<<","<<all_features.cols<<endl;
+	std::cout<<"-------concatenate features: "<<all_features.rows<<","<<all_features.cols<<endl;
 
 	if (pca)
 	{
 		if (boost::filesystem::exists("data/all_features_pca.dat"))
 		{
-			cout<<"use pre_computed features_pca!"<<endl;
+			std::cout<<"use pre_computed features_pca!"<<endl;
 			ifstream ifs("data/all_features_pca.dat",std::ios::in|std::ios::binary);
 			{
 				boost::archive::binary_iarchive ia(ifs);
@@ -363,7 +430,7 @@ int main(int argc,char * argv[])
 		}
 		else
 		{
-			cout<<"-------compute PCA for all images--------"<<endl;
+			std::cout<<"-------compute PCA for all images--------"<<endl;
 			getPCAfromFeatures(all_features,all_features_pca,mean,eigenVecs);
 			ofstream ofs("data/all_features_pca.dat",std::ios::out|std::ios::binary);
 			{
@@ -376,22 +443,23 @@ int main(int argc,char * argv[])
 	}
 	CvSVM model;
 	if (pca)
-		trainModel(all_features_pca,pca,posN,negN,model);
+		trainModel(all_features_pca,pca,response,model,0);
 	else
-		trainModel(all_features,pca,posN,negN,model);
+		trainModel(all_features,pca,response,model,0);
 	if (pca)
-		cout<<"-------pca features: "<<all_features_pca.rows<<","<<all_features_pca.cols<<endl;
-
+		std::cout<<"-------pca features: "<<all_features_pca.rows<<","<<all_features_pca.cols<<endl;
+	std::cout << "-----finished---1st-round-training\n";
+	miningHN(model, false, argv[2], 4, 64, 64, all_features, response);
 
 	//input a test image
 	Mat input;
 	input=imread("car15.jpg");
-	cout<<"image size : "<<input.cols<<","<<input.rows<<endl;
+	std::cout<<"image size : "<<input.cols<<","<<input.rows<<endl;
 
 	//generate detection locations
 	vector<Rect> locs;
 	genLoc(input.cols,input.rows,64,64,4,locs);
-	cout<<"possible locations: "<<locs.size()<<endl;
+	std::cout<<"possible locations: "<<locs.size()<<endl;
 	//slide window detection
 	vector<float> score;
 	if (!pca)
